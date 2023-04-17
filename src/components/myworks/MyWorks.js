@@ -23,6 +23,7 @@ function MyWorks() {
             <Work title="SnakeGame" imgsrc={"technologies/snakeGame.png"} link="https://kuntal112.github.io/snakegame.github.io/"></Work>
             <Work title="Tic-tac-toe" imgsrc={"technologies/t3.png"} link="https://kuntal112.github.io/tictactoe.github.io/" />
             <Work title="bootstrap" imgsrc={"https://i.ibb.co/hCqxWgD/Screenshot-2021-08-07-230519.png"}link="https://kuntal112.github.io/project4-8.github.io/"/> 
+            <Work title="boxGame" imgsrc={"https://i.ibb.co/D77vW3H/boxgame.jpg"}link="https://kuntal112.github.io/littleboxgame.github.io/"/> 
             </div>
             
         </div>
