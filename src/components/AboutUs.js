@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { routeContext } from "../App"
 import SocialLinks from './SocialLinks'
+import {experiances} from '../data'
 import TimeLineCard from './TimeLineCard'
 function AboutUs() {
     let { dispatch } = useContext(routeContext);
@@ -8,12 +9,13 @@ function AboutUs() {
         const dob = new Date("11/06/1997");
         const currDate = new Date();
         return parseInt(((currDate - dob) / 31536000000));
-
     }
+    
     useEffect(() => {
-
         dispatch({ page: "home", payload: { next: "skills", prev: "" } })
+        return ()=>window.speechSynthesis.cancel();
     }, [dispatch])
+
     let speechHandler = () => {
         if ("webkitSpeechRecognition" in window) {
             console.log("yes available")
@@ -35,7 +37,7 @@ function AboutUs() {
                 <hr className=""></hr>
             </div>
 
-            <div className="card-container" data-aos="zoom-in" data-aos-easing="ease-in-sine">
+            <div className="card-container">
 
                 <div className="about-me-card  ">
                     <div className="about-me-image">
@@ -54,35 +56,15 @@ function AboutUs() {
                 </div>
                 <div className="timeline-container">
                     <div className="edu-timeline-box">
-                        <h1>Education</h1>
+                        <h1>Experiance</h1>
                         <div className="timeline">
-                            <TimeLineCard year="2022-July..." Degree="Programmer Analyst Trainee" organization="Cognizant" description="EE Full Stack Java Developer" />
-                            <TimeLineCard year="2021-Dec To 2022-June" Degree="6 months of training FSE Java" organization="Cognizant" description="Full Stack Java Developer" />
-                            <TimeLineCard year="2021-Aug To Nov" Degree="MERN Stack Internship " organization="Sigaram Software Technologies" description="Worked mainly on React" />
-                            <TimeLineCard year="2020-Feb To 2021-July" Degree="Data Analyst" organization="Globsyn IT Services" description="Worked as Data Analyst" />
-                            <div className="timeline-cards"><div className="point"></div>
-                                <h3>2016-2020</h3>
-                                <h3>Graduation</h3>
-                                <h6>B.Tech (Information Technology) </h6>
-                                <h5><span>From: </span>Maulana Abul Kalam Azad University of Technology</h5>
-                                <h5>With 7.8 CGPA</h5>
-                            </div>
-                            <div className="timeline-cards"><div className="point"></div>
-                                <h3>2014-2015</h3>
-                                <h3>Higher Secondary Education</h3>
-                                <h5><span>From: </span>W.B.C.H.S.E</h5>
-                                <h5>With an aggregate of 78.04%</h5>
-                            </div>
-                            <div className="timeline-cards">
-                                <div className="point"></div>
-                                <h3>2013</h3>
-                                <h3>Secondary Education</h3>
-                                <h5><span>From: </span>W.B.B.S.E</h5>
-                                <h5>With an aggregate of 75.5%</h5>
-                            </div>
-
-
-
+                            {
+                                experiances.length>=1 && 
+                                [...experiances].reverse().map(experiance=>{
+                                    let {year,degree,organization,description}=experiance;
+                                    return <TimeLineCard year={year} Degree={degree} organization={organization} description={description} />
+                                })
+                            }
                         </div>
                     </div>
 

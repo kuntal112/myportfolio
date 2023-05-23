@@ -597,6 +597,7 @@ body{
     list-style: none;
     width: 50%;
     margin: auto;
+    font-weight: bolder;
 }
 .skill-bar h5{
     text-align: center;
@@ -604,14 +605,17 @@ body{
     height: 100%;
     font-size: .8rem;
 }
-.skill-bar li{
+.skill-bar >div>.details{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     margin: 5px 0;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.589);
     border-radius: 10px;
+}
+.skill-bar >div:last-child{
+    margin-bottom: 50px;
 }
 .bar{
     margin: 0 20px;
@@ -619,7 +623,7 @@ body{
     width:90%;
     line-height: 13px;
     display: block;
-    height: 20px;
+    height: 15px;
     border:2px solid rgb(9, 107, 91);
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -728,6 +732,9 @@ background-color: rgb(203, 240, 37);
   .footer-bar{
       color: white;
       text-align: center;
+  }
+  .collapsed{
+      width:0 !important;
   }
   
   
