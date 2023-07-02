@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { routeContext } from "../../App"
 import Work from './Works'
+import {works} from '../../data'
 
 function MyWorks() {
     let { dispatch } = useContext(routeContext);
@@ -17,13 +18,9 @@ function MyWorks() {
             </div>
 
             <div className="work-container" data-aos="zoom-in" data-aos-easing="ease-in-sine">
-                <Work title="Social-media" imgsrc={"technologies/socialmedia.png"} link="https://taupe-begonia-0aac47.netlify.app/" ></Work>
-                <Work title="CryptoMarket" imgsrc={"technologies/cryptomarket.png"} link="https://kuntal112.github.io/cryptodata/"></Work>
-                <Work title="SnakeGame" imgsrc={"technologies/snakeGame.png"} link="https://kuntal112.github.io/snakegame.github.io/"></Work>
-                <Work title="Tic-tac-toe" imgsrc={"technologies/t3.png"} link="https://kuntal112.github.io/tictactoe.github.io/" />
-                <Work title="bootstrap" imgsrc={"https://i.ibb.co/hCqxWgD/Screenshot-2021-08-07-230519.png"} link="https://kuntal112.github.io/project4-8.github.io/" />
-                <Work title="boxGame" imgsrc={"https://i.ibb.co/D77vW3H/boxgame.jpg"} link="https://kuntal112.github.io/littleboxgame.github.io/" />
-                <Work title="marioGame" imgsrc={"https://i.ibb.co/ngnpWfw/image.png"} link="https://kuntal112.github.io/mariogame.github.io/" />
+                {works.map((work,index)=>{
+                    return  <Work title={work.title} imgsrc={work.imgSrc} link={work.link} ></Work>
+                })}
             </div>
 
         </div>

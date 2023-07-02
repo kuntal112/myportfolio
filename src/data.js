@@ -34,6 +34,11 @@ export const works = [
         imgSrc: "https://i.ibb.co/ngnpWfw/image.png",
         link: "https://kuntal112.github.io/mariogame.github.io/"
     },
+    {
+        title: "MovieBookingApp",
+        imgSrc: "https://i.ibb.co/9c8hqGg/moviebookingapp.png",
+        link: "https://profound-kitsune-e20575.netlify.app/"
+    },
 ]
 export const experiances = [
     {
