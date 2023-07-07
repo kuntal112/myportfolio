@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer,useState } from 'react'
 import Home from './components/home/Home'
 import NavBar from './components/NavBar'
 import AboutUs from './components/AboutUs'
@@ -12,19 +12,16 @@ import { initialState, reducer } from './reducers/RouteReducer'
 export const routeContext = createContext();
 let App = () => {
     let [state, dispatch] = useReducer(reducer, initialState);
-
+    let [navStatus,setNavStatus]=useState(false);
     const toggle = () => {
-        let navbar = document.querySelector(".navbar");
-        let lines=document.querySelector(".lines");
-        lines.classList.toggle("open")
-        navbar.classList.toggle("closed")
+        setNavStatus(!navStatus)
     }
     return (
         <div className="app-div">
             <BrowserRouter>
                 <div className="outer-nav-div">
-                    <div onClick={toggle} className="nav-toggler"><span className="lines"></span></div>
-                    <NavBar />
+                    <div onClick={toggle} className="nav-toggler"><span className={`lines ${navStatus&&"open"}`}></span></div>
+                    <NavBar status={navStatus}/>
                 </div>
                 <routeContext.Provider value={{ state, dispatch }}>
 

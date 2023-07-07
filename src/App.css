@@ -472,6 +472,7 @@ body{
         height: 40px;
         width: 45px;
         border: 1px solid #d4d4e3;
+        border-radius: 4px;
         z-index: 100;
         background-color: crimson;
         cursor: pointer;
@@ -482,7 +483,8 @@ body{
         width: 18px;
         background-color: rgba(224, 248, 4, 0);
      display: inline-block;
-     left: 25%;  
+     left: 30%; 
+     top:15%; 
     }
     .nav-toggler .open::before{
         content: "";
@@ -512,7 +514,8 @@ body{
         width: 18px;
         background-color: rgb(250, 248, 248);
      display: inline-block;
-     left: 25%;
+     left: 30%;
+     top: 15%;
     }
    
     .nav-toggler span::before{
@@ -675,6 +678,8 @@ body{
     /* position: relative; */
     min-height: 30vh;
     width:300px;
+    height: 198px;
+    padding-bottom: 8px;
 }
 .work button{
 border: 0;
@@ -685,6 +690,7 @@ background-color: rgb(203, 240, 37);
 }
 .work button a{
     text-decoration: none;
+    
 }
 .work:hover{
     animation: work-animation 2s  ;
@@ -695,6 +701,12 @@ background-color: rgb(203, 240, 37);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+.work>.linkContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
     align-items: center;
 }
 @media only screen and (max-width:550px){

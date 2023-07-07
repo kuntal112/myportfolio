@@ -17,9 +17,9 @@ function MyWorks() {
                 <hr className=""></hr>
             </div>
 
-            <div className="work-container" data-aos="zoom-in" data-aos-easing="ease-in-sine">
-                {works.map((work,index)=>{
-                    return  <Work title={work.title} imgsrc={work.imgSrc} link={work.link} ></Work>
+            <div className="work-container">
+                {works.map(work=>{
+                    return  <Work title={work.title} key={work.id} imgsrc={work.imgSrc} link={work.link} gitHubLink={work.gitHubLink}></Work>
                 })}
             </div>
 

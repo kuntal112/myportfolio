@@ -52,7 +52,7 @@ function ContactUs() {
         <h1 className="component-headings">Contact Me</h1>
         <hr></hr>
       </div>
-      <div data-aos="zoom-in" data-aos-easing="ease-in-sine" className="contact-form-area contact-Div text-white">
+      <div className="contact-form-area contact-Div text-white">
         <form className=" align-item-center needs-validation" noValidate>
         <h3 className="contact-page-intro"> Have a question or want to give any suggestion ???? Drop here</h3>
 

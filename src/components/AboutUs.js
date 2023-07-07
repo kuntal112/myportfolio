@@ -3,6 +3,8 @@ import { routeContext } from "../App"
 import SocialLinks from './SocialLinks'
 import {experiances} from '../data'
 import TimeLineCard from './TimeLineCard'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 function AboutUs() {
     let { dispatch } = useContext(routeContext);
     let age = () => {
@@ -41,7 +43,7 @@ function AboutUs() {
 
                 <div className="about-me-card  ">
                     <div className="about-me-image">
-                        <img src="technologies/mypico.jpg" alt="" onClick={speechHandler}></img>
+                        <LazyLoadImage src="technologies/mypico.jpg" alt="" onClick={speechHandler}></LazyLoadImage>
                     </div>
                     <div className="card-body about-card ">
                         <h5 className="card-title pt-3">Who Am I &#8263;</h5>
@@ -61,8 +63,8 @@ function AboutUs() {
                             {
                                 experiances.length>=1 && 
                                 [...experiances].reverse().map(experiance=>{
-                                    let {year,degree,organization,description}=experiance;
-                                    return <TimeLineCard year={year} Degree={degree} organization={organization} description={description} />
+                                    let {id,year,degree,organization,description}=experiance;
+                                    return <TimeLineCard key={id} year={year} Degree={degree} organization={organization} description={description} />
                                 })
                             }
                         </div>

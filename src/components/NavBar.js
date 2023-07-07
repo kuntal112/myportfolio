@@ -2,9 +2,9 @@ import React from 'react'
 import SocialLinks from "./SocialLinks"
 import { Link } from "react-router-dom"
 import Footer from './Footer'
-var NavBar = () => {
+const NavBar = ({status}) => {
   return (
-    <div className="navbar closed">
+    <div className={`navbar ${status?"open":"closed"}`}>
       
       <div className="brand-logo">
 
