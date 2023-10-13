@@ -748,13 +748,23 @@ background-color: rgb(203, 240, 37);
   .collapsed{
       width:0 !important;
   }
+  .fallbackpage{
+      position:fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 999998;
+      background-color: rgba(73, 62, 62, 0.37);
+  }
   .loader {
-    position: fixed;
+    position: absolute;
+    text-align: center;
+    border-radius: 8px;
     top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    left: calc(50% - 125px);
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.37);
     z-index: 999999;
   }
   
