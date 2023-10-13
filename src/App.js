@@ -1,14 +1,14 @@
-import React, { createContext, useReducer,useState } from 'react'
+import React, { createContext, useReducer,useState,lazy,Suspense } from 'react'
 import Home from './components/home/Home'
 import NavBar from './components/NavBar'
-import AboutUs from './components/AboutUs'
-import ContactUs from './components/contactus/ContactUs'
-import MyWorks from './components/myworks/MyWorks'
-import Skills from './components/Skills'
-import SkillCard from './components/SkillCard';
 import "./App.css"
 import { BrowserRouter, Link, Route } from "react-router-dom"
 import { initialState, reducer } from './reducers/RouteReducer'
+import Fallback from './components/Fallback'
+const AboutUs=lazy(()=>import("./components/AboutUs"))
+const ContactUs=lazy(()=>import("./components/contactus/ContactUs"))
+const MyWorks=lazy(()=>import("./components/myworks/MyWorks"))
+const Skills=lazy(()=>import("./components/Skills"))
 export const routeContext = createContext();
 let App = () => {
     let [state, dispatch] = useReducer(reducer, initialState);
@@ -26,21 +26,13 @@ let App = () => {
                 <routeContext.Provider value={{ state, dispatch }}>
 
                     <div className="components-section">
-                        <Route path="/" exact component={Home}>
-                            <Home></Home>
-                        </Route>
-                        <Route path="/about" exact component={AboutUs}>
-                            <AboutUs />
-                        </Route>
-                        <Route path="/skills" exact component={SkillCard}>
-                            <Skills />
-                        </Route>
-                        <Route path="/myworks" exact component={MyWorks}>
-                            <MyWorks />
-                        </Route>
-                        <Route path="/contact" exact component={ContactUs}>
-                            <ContactUs />
-                        </Route>
+                        <Suspense fallback={<Fallback/>}>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/about" exact component={AboutUs} />
+                        <Route path="/skills" exact component={Skills} />
+                        <Route path="/myworks" exact component={MyWorks} />
+                        <Route path="/contact" exact component={ContactUs} />
+                        </Suspense>
                     </div>
                 </routeContext.Provider>
 
