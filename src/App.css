@@ -748,6 +748,15 @@ background-color: rgb(203, 240, 37);
   .collapsed{
       width:0 !important;
   }
+  .loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 999999;
+  }
   
   
   
