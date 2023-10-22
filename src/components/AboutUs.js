@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { routeContext } from "../App"
 import SocialLinks from './SocialLinks'
 import {experiances} from '../data'
@@ -7,6 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 function AboutUs() {
     let { dispatch } = useContext(routeContext);
+    const [expData,setExpData]=useState([]);
     let age = () => {
         const dob = new Date("11/06/1997");
         const currDate = new Date();
@@ -15,6 +16,9 @@ function AboutUs() {
     
     useEffect(() => {
         dispatch({ page: "home", payload: { next: "skills", prev: "" } })
+        fetch(process.env.REACT_APP_EXP_DATA_URL)
+        .then(res=>res.json())
+        .then(data=>setExpData(data));
         return ()=>window.speechSynthesis.cancel();
     }, [dispatch])
 
@@ -59,15 +63,21 @@ function AboutUs() {
                 <div className="timeline-container">
                     <div className="edu-timeline-box">
                         <h1>Experiance</h1>
+
+                       { 
+                        expData.length>=1?
                         <div className="timeline">
                             {
-                                experiances.length>=1 && 
-                                [...experiances].reverse().map(experiance=>{
+                                
+                                [...expData].reverse().map(experiance=>{
                                     let {id,year,degree,organization,description}=experiance;
                                     return <TimeLineCard key={id} year={year} Degree={degree} organization={organization} description={description} />
                                 })
                             }
-                        </div>
+                        </div>:
+                        <h3>Loading...</h3>
+                    }
+
                     </div>
 
                 </div>

@@ -1,12 +1,17 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { routeContext } from "../../App"
 import Work from './Works'
 import {works} from '../../data'
 
 function MyWorks() {
-    let { dispatch } = useContext(routeContext);
+    const [workList,setWorkList]=useState(works);
+    const { dispatch } = useContext(routeContext);
     useEffect(() => {
         dispatch({ page: "home", payload: { next: "contact", prev: "skills" } })
+        fetch(`${process.env.REACT_APP_WORK_DATA_URL}`)
+        .then(res=>res.json())
+        .then(data=>setWorkList([...works,...data]))
+        .catch(e=>console.log(e));
 
     }, [dispatch])
 
@@ -18,7 +23,7 @@ function MyWorks() {
             </div>
 
             <div className="work-container">
-                {works.map(work=>{
+                {workList.map(work=>{
                     return  <Work title={work.title} key={work.id} imgsrc={work.imgSrc} link={work.link} gitHubLink={work.gitHubLink}></Work>
                 })}
             </div>
